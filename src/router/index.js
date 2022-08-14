@@ -42,7 +42,7 @@ const router = createRouter({
       path: "/posts/:slug",
       name: "UpdateArticle",
       component: UpdateArticle, 
-      meta: { requireAuth: true },
+      meta: { requiresAuth: true },
     },
   ],
 });
@@ -53,14 +53,13 @@ router.beforeEach((to) => {
 
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
     return {
-     // save the location we were at to come back later
+      path: "/login",
     }
   } 
 })
 const DEFAULT_TITLE = 'Blog';
 
 router.afterEach((to) => {
-        document.title = to.name || DEFAULT_TITLE;
-    
+  document.title = to.name || DEFAULT_TITLE;
 });
 export default router;

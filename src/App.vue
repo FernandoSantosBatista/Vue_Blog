@@ -25,7 +25,6 @@ export default {
   },
 };
 </script>
-
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&display=swap");
 body {
@@ -33,5 +32,6 @@ body {
   padding: 0;
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
+  background-color: #f3f3f3;
 }
 </style>

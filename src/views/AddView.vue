@@ -12,7 +12,6 @@
             id="title"
           />
         </div>
-
         <div class="mb-3">
           <label for="description" class="form-label">Descrição</label>
 
@@ -23,7 +22,6 @@
             rows="3"
           ></textarea>
         </div>
-
         <div class="mb-3">
           <label for="content" class="form-label">Texto</label>
 
@@ -54,14 +52,14 @@
 </template>
 <script>
 import { mapActions, mapState } from "pinia";
-import { useAuthStore } from "../stores/auth.store";
+import { useArticlesStore } from "../stores/articles.store";
 export default {
   name: "AddView",
   computed: {
-    ...mapState(useAuthStore, ["token", "article", "isAuthenticated"]),
+    ...mapState(useArticlesStore, ["token", "article", "isAuthenticated"]),
   },
   methods: {
-    ...mapActions(useAuthStore, ["storeData", "onFileChange"]),
+    ...mapActions(useArticlesStore, ["storeData", "onFileChange"]),
     store() {
       this.storeData(
         (this.article.slug = this.article.title
@@ -82,8 +80,4 @@ export default {
   },
 };
 </script>
-<style>
-body {
-  background-color: #fff;
-}
-</style>
+<style></style>

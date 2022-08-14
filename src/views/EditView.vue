@@ -1,55 +1,47 @@
 <template>
-  <body>
-    <div class="container" align="center">
-      <div class="container-fluid">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h2><strong>Pagina de Edição</strong></h2>
-        </div>
-      </div>
-      <div class="container-fluid">
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-          <div v-for="(article, index) in articles" :key="index">
-            <div class="card card-img-top article-top">
-              <h3>{{ article.title }}</h3>
-              <img class="img-fluid" :src="article.get_image" />
-              <div class="card card-body text-justify">
-                <p>{{ article.description }}</p>
-                <div>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <router-link
-                      class="btn btn-outline-primary px-5"
-                      :to="`/posts/${article.slug}`"
-                      >Editar</router-link
-                    >
-                    <button
-                      class="btn btn-outline-primary px-5"
-                      @click="deletedata(article.slug)"
-                    >
-                      Deletar
-                    </button>
-                  </div>
-                </div>
-                <hr />
-              </div>
+  <div class="container-fluid">
+    <div>
+      <h2 class="text-center"><strong>Pagina Editar</strong></h2>
+    </div>
+    <div class="container d-flex justify-content-center flex-column">
+      <div v-for="(article, index) in articles" :key="index">
+        <h3 class="h3">{{ article.title }}</h3>
+        <img class="img-fluid" :src="article.get_image" />
+        <p>{{ article.description }}</p>
+        <div>
+          <div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+              <router-link
+                class="btn btn-outline-primary px-5"
+                :to="`/posts/${article.slug}`"
+                >Editar</router-link
+              >
+              <button
+                class="btn btn-outline-primary px-5"
+                @click="deletedata(article.slug)"
+              >
+                Deletar
+              </button>
             </div>
           </div>
+          <hr />
         </div>
       </div>
     </div>
-  </body>
+  </div>
 </template>
 <script>
 import { mapActions, mapState } from "pinia";
 import Swal from "sweetalert2";
-import { useAuthStore } from "../stores/auth.store";
+import { useArticlesStore } from "../stores/articles.store";
 export default {
   name: "EditView",
 
   computed: {
-    ...mapState(useAuthStore, ["articles"]),
+    ...mapState(useArticlesStore, ["articles"]),
   },
   methods: {
-    ...mapActions(useAuthStore, ["getData", "deleteData"]),
+    ...mapActions(useArticlesStore, ["getData", "deleteData"]),
     deletedata(article) {
       Swal.fire({
         icon: "question",
@@ -93,10 +85,6 @@ export default {
 p {
   text-align: justify;
 }
-h3 {
-  text-align: justify;
-  padding: 20px;
-}
 h2 {
   margin-top: 40px;
 }
@@ -105,7 +93,8 @@ h2 {
   background-color: white;
   border: 1px solid #fff;
 }
-body {
-  background-color: #f3f3f3;
+.h3{
+  margin-top: 25px;
 }
+
 </style>

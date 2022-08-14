@@ -91,7 +91,4 @@ export default {
   border-color: #C66300;;
 }
 
-body {
-  background-color: #fff;
-}
 </style>

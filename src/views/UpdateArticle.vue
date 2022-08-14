@@ -54,15 +54,15 @@
 <script>
 import { mapActions, mapState } from "pinia";
 import Swal from "sweetalert2";
-import { useAuthStore } from "../stores/auth.store";
+import { useArticlesStore } from "../stores/articles.store";
 export default {
   name: "UpdateArticle",
 
   computed: {
-    ...mapState(useAuthStore, ["article"]),
+    ...mapState(useArticlesStore, ["article"]),
   },
   methods: {
-    ...mapActions(useAuthStore, ["updateData", "onFileChange", "getById"]),
+    ...mapActions(useArticlesStore, ["updateData", "onFileChange", "getById"]),
 
     updatedata() {
       this.updateData(this.article);
@@ -85,7 +85,5 @@ export default {
 };
 </script>
 <style>
-body {
-  background-color: #fff;
-}
+
 </style>

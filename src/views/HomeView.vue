@@ -1,45 +1,36 @@
 <template>
-  <body>
-    <div class="container-fluid" align="center">
-      <div class="container-fluid">
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h2 class="article"><strong>Página Home</strong></h2>
+  <div class="container-fluid">
+    <div>
+      <h2 class="text-center"><strong>Pagina Home</strong></h2>
+    </div>
+    <div class="container d-flex justify-content-center flex-column">
+      <div v-for="(article, index) in articles" :key="index">
+        <h3 class="h3">{{ article.title }}</h3>
+        <img class="img-fluid" :src="article.get_image" />
+        <p>{{ article.description }}</p>
+        <div>
+          <h4>
+            <a :href="`/post/${article.slug}`">
+              <p class="text-center">ver mais...</p></a
+            >
+          </h4>
         </div>
-      </div>
-      <div class="container">
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-          <div v-for="(article, index) in articles" :key="index">
-            <div class="card card-img-top article-top">
-              <h3>{{ article.title }}</h3>
-              <img class="img-fluid" :src="article.get_image"/>
-              <div class="card card-body text-justify">
-                <p>{{ article.description }}</p>
-                <p></p>
-                <div>
-                  <h4>
-                    <a :href="`/post/${article.slug}`">ver mais...</a>
-                  </h4>
-                </div>
-                <hr />
-              </div>
-            </div>
-          </div>
-        </div>
+        <hr />
       </div>
     </div>
-  </body>
+  </div>
 </template>
 <script>
 import { mapActions, mapState } from "pinia";
-import { useAuthStore } from "../stores/auth.store";
+import { useArticlesStore } from "../stores/articles.store";
 export default {
   name: "HomeView",
 
   computed: {
-    ...mapState(useAuthStore, ["articles"]),
+    ...mapState(useArticlesStore, ["articles"]),
   },
   methods: {
-    ...mapActions(useAuthStore, ["getData"]),
+    ...mapActions(useArticlesStore, ["getData"]),
   },
   mounted() {
     this.getData();
@@ -47,16 +38,26 @@ export default {
 };
 </script>
 <style>
+.container-fluid {
+  padding-right: unset;
+  padding-left: unset;
+}
+.container,
+.container-lg,
+.container-md,
+.container-sm {
+  max-width: 960px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background-color: white;
+}
+
 p {
   text-align: justify;
 }
 
-h3 {
-  text-align: justify;
-  padding: 20px;
-}
-.article {
-  margin-top: 40px;
+.h3 {
+  margin-top: 25px;
 }
 
 .card {
@@ -65,15 +66,9 @@ h3 {
   border: 1px solid #fff;
 }
 
-body {
-  background-color: #f3f3f3;
-  
-}
-
-a{
+a {
   text-decoration: none;
   color: rgb(255, 81, 0);
-  
 }
 a:hover {
   text-decoration: none;
