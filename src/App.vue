@@ -4,7 +4,6 @@
     <router-view />
   </div>
 </template>
-
 <script>
 import NavBar from "./components/NavBar.vue";
 import { mapActions, mapState } from "pinia";

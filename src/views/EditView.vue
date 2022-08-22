@@ -4,7 +4,14 @@
       <h2 class="text-center"><strong>Pagina Editar</strong></h2>
     </div>
     <div class="container d-flex justify-content-center flex-column">
-      <div v-for="(article, index) in articles" :key="index">
+      <input
+        class="form-control search"
+        type="search"
+        v-model="search"
+        placeholder="Pesquisar postagem"
+        aria-label="Search"
+      />
+      <div v-for="(article, index) in filteredPost" :key="index">
         <h3 class="h3">{{ article.title }}</h3>
         <img class="img-fluid" :src="article.get_image" />
         <p>{{ article.description }}</p>
@@ -31,14 +38,15 @@
   </div>
 </template>
 <script>
-import { mapActions, mapState } from "pinia";
+import { mapActions, mapState, mapWritableState } from "pinia";
 import Swal from "sweetalert2";
 import { useArticlesStore } from "../stores/articles.store";
 export default {
   name: "EditView",
 
   computed: {
-    ...mapState(useArticlesStore, ["articles"]),
+    ...mapState(useArticlesStore, ["filteredPost"]),
+    ...mapWritableState(useArticlesStore, ["search"]),
   },
   methods: {
     ...mapActions(useArticlesStore, ["getData", "deleteData"]),
@@ -93,8 +101,11 @@ h2 {
   background-color: white;
   border: 1px solid #fff;
 }
-.h3{
+.h3 {
   margin-top: 25px;
 }
-
+.search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 </style>

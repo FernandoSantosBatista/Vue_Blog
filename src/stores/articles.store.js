@@ -4,13 +4,24 @@ import Articles from "../models/Articles";
 
 export const useArticlesStore = defineStore({
   id: "articles",
-  state: () => ({
-    isAuthenticated: false,
-    token: "",
-    username: "",
-    article: new Articles(),
-    articles: [],
-  }),
+  state: () => {
+    return {
+      isAuthenticated: false,
+      token: "",
+      username: "",
+      article: new Articles(),
+      articles: [],
+      search: "",
+    };
+  },
+
+  getters: {
+    filteredPost(state) {
+      return state.articles.filter((a) =>
+        a.slug.toLowerCase().includes(state.search.toLowerCase())
+      );
+    },
+  },
   actions: {
     login(token) {
       this.isAuthenticated = true;
@@ -46,6 +57,7 @@ export const useArticlesStore = defineStore({
         this.articles = response.data;
       });
     },
+
     updateData(post) {
       let token = localStorage.getItem("token");
       if (token) {
