@@ -4,19 +4,28 @@
       <h2 class="text-center"><strong>Pagina Home</strong></h2>
     </div>
     <div class="container d-flex justify-content-center flex-column">
-      <div v-for="(article, index) in articles" :key="index">
-        <h3 class="h3">{{ article.title }}</h3>
-        <img class="img-fluid" :src="article.get_image" />
-        <p>{{ article.description }}</p>
-        <div>
-          <h4>
-            <a :href="`/post/${article.slug}`">
-              <p class="text-center">ver mais...</p></a
-            >
-          </h4>
+      <template v-if="articles.length">
+        <div v-for="(article, index) in articles" :key="index">
+          <h3 class="h3">{{ article.title }}</h3>
+          <img class="img-fluid" :src="article.get_image" />
+
+          <p>{{ article.description }}</p>
+          <div>
+            <h4>
+              <a :href="`/post/${article.slug}`">
+                <p class="text-center">ver mais...</p></a
+              >
+            </h4>
+          </div>
+          <hr />
         </div>
-        <hr />
-      </div>
+      </template>
+      <template v-else>
+        <h3 class="text-center">
+          Nada Aqui ! Faça o <router-link to="/login">login</router-link> e
+          comece a postar seu conteúdo
+        </h3>
+      </template>
     </div>
   </div>
 </template>
