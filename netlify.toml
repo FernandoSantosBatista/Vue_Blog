@@ -4,6 +4,10 @@
   functions = "netlify/functions"
   publish = "dist"
 
+  [[plugins]]
+  # runs Cypress tests against the deployed URL
+  package = "netlify-plugin-cypress"
+
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
   [[redirects]]
