@@ -17,7 +17,7 @@ package = "netlify-plugin-cypress"
 [plugins.inputs]
     # skip the default tests before the deploy
    
-  [plugins.inputs.preBuild]
+  [plugins.inputs.onSuccess]
     # run tests after the deploy
     
 
