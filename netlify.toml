@@ -16,10 +16,10 @@ TERM = "xterm"
 package = "netlify-plugin-cypress"
 [plugins.inputs]
     # skip the default tests before the deploy
-    skip = true
+   
   [plugins.inputs.preBuild]
     # run tests after the deploy
-    enable = true
+    
 
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
