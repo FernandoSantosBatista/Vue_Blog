@@ -16,9 +16,9 @@ TERM = "xterm"
 package = "netlify-plugin-cypress"
 
 [plugins.inputs]
-  baseUrl = "https://docs.cypress.io"
-  
-    
+    # run E2E tests against the deployed URL
+    record = true
+    group = 'deployed'
 
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
