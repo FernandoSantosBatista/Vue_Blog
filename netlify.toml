@@ -16,10 +16,9 @@ TERM = "xterm"
 package = "netlify-plugin-cypress"
 
 [plugins.inputs]
-    # run E2E tests against the deployed URL
-    record = true
-    group = 'deployed'
-
+    # these settings apply to the default step onSuccess
+    # in this case, we do not want to run any tests after deploy
+    enable = false
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
