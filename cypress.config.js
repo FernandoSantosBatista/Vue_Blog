@@ -7,6 +7,9 @@ module.exports = defineConfig({
     devServer: {
       framework: 'vue',
       bundler: 'vite',
+      e2e: {
+        baseUrl: 'https://blogs-post.netlify.app/'
+      }
     },
   },
 })
