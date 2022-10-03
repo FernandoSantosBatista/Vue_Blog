@@ -7,16 +7,11 @@
   # Cypress plugin
 [[plugins]]
   package = "netlify-plugin-cypress"
+  
   [plugins.inputs]
-    # run E2E tests against the deployed URL
-    record = true
-    group = 'deployed'
-  [plugins.inputs.preBuild]
-    # run E2E tests against locally built site
-    # before deploying it
-    enable = true
-    record = true
-    group = 'built'
+    # these settings apply to the default step onSuccess
+    # in this case, we do not want to run any tests after deploy
+    enable = false
     
 
 
