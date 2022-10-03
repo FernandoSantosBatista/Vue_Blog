@@ -11,7 +11,7 @@
     # run E2E tests against the deployed URL
     record = true
     group = 'deployed'
-  [plugins.inputs.postBuild]
+  [plugins.inputs.onSuccess]
     # run E2E tests against locally built site
     # before deploying it
     enable = true
