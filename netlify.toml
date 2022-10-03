@@ -11,7 +11,7 @@
   [plugins.inputs]
     # these settings apply to the default step onSuccess
     # in this case, we do not want to run any tests after deploy
-    enable = false
+    enable = true
     
 
 
