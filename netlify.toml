@@ -20,6 +20,13 @@ package = "netlify-plugin-cypress"
     # in this case, we do not want to run any tests after deploy
     enable = false
 
+[plugins.inputs.postBuild]
+    # run E2E tests against locally built site
+    # before deploying it
+    enable = true
+    record = true
+    group = 'built'
+
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
   [[redirects]]
