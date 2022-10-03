@@ -10,12 +10,10 @@
 CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 # set TERM variable for terminal output
 TERM = "xterm"
-# do not print too many progress messages
-CI = "1"
 
 [[plugins]]
-  # local Cypress plugin will test our site after it is built
-  package = "netlify-plugin-cypress"
+# runs Cypress tests against the deployed URL
+package = "netlify-plugin-cypress"
   
     
 
